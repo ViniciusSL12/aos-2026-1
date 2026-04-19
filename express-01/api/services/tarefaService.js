@@ -5,7 +5,16 @@ export const criarTarefa = async (dados) => {
 };
 
 export const listarTarefas = async () => {
-  return await models.Tarefa.findAll();
+  try {
+    return await models.Tarefa.findAll();
+  } catch (error) {
+    console.error("ERRO REAL LISTAR TAREFAS:");
+    console.error("message:", error.message);
+    console.error("name:", error.name);
+    console.error("parent:", error.parent);
+    console.error("original:", error.original);
+    throw error;
+  }
 };
 
 export const buscarPorId = async (objectId) => {
