@@ -4,8 +4,8 @@
   "description": "Projeto Express + PostgreSQL para estudo",
   "main": "api/index.js",
   "scripts": {
-  "start": "node api/index.js"
-},
+    "start": "node api/index.js"
+  },
   "keywords": [
     "express",
     "postgresql",
@@ -23,6 +23,7 @@
     "express": "^5.2.1",
     "nodemon": "^3.1.12",
     "pg": "^8.20.0",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.8",
     "uuid": "^8.3.2"
   }
