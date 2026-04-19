@@ -1,25 +1,27 @@
 export default (sequelize, DataTypes) => {
   const Tarefa = sequelize.define("Tarefa", {
-    
     titulo: {
       type: DataTypes.STRING,
     },
 
     descricao: {
       type: DataTypes.STRING,
-      allowNull: false, 
+      allowNull: false,
     },
 
     concluida: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false, 
+      defaultValue: false,
     },
 
     objectId: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
     }
-
+  }, {
+    tableName: "tarefas",  
+    freezeTableName: true
   });
 
   return Tarefa;
