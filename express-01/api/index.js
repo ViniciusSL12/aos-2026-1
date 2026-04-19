@@ -35,6 +35,4 @@ app.get("/", (req, res) => {
   );
 });
 
-await sequelize.sync({ alter: true });
-
 export default app;
