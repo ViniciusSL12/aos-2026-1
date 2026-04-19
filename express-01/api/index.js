@@ -10,6 +10,7 @@ app.set("trust proxy", true);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(async (req, res, next) => {
   req.context = {
     models,
@@ -17,6 +18,7 @@ app.use(async (req, res, next) => {
   };
   next();
 });
+
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${req.ip}`);
   next();
@@ -33,48 +35,6 @@ app.get("/", (req, res) => {
   );
 });
 
-const port = process.env.PORT ?? 3000;
-const eraseDatabaseOnSync = process.env.ERASE_DATABASE_ON_SYNC === "true";
-
-sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
-  if (eraseDatabaseOnSync) {
-    createUsersWithMessages();
-  }
-});
-
-const createUsersWithMessages = async () => {
-  await models.User.create(
-    {
-      username: "rwieruch",
-      email: "rwieruch@email.com",
-      messages: [
-        {
-          text: "Published the Road to learn React",
-        },
-      ],
-    },
-    {
-      include: [models.Message],
-    },
-  );
-
-  await models.User.create(
-    {
-      username: "ddavids",
-      email: "ddavids@email.com",
-      messages: [
-        {
-          text: "Happy to release ...",
-        },
-        {
-          text: "Published a complete ...",
-        },
-      ],
-    },
-    {
-      include: [models.Message],
-    },
-  );
-};
+await sequelize.sync({ alter: true });
 
 export default app;
