@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Tarefa = sequelize.define("tarefa", {
+  const Tarefa = sequelize.define("Tarefa", {
     
     titulo: {
       type: DataTypes.STRING,
