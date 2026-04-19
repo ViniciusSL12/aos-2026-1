@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "extra": {
+      "API_URL": "https://aos-2026-1-mu.vercel.app",
+      "eas": {
+        "projectId": "632d72d4-7aff-456e-bf42-7c6809d5caa2"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/632d72d4-7aff-456e-bf42-7c6809d5caa2"
+    },
+    "android": {},
+    "ios": {}
+  }
+}
