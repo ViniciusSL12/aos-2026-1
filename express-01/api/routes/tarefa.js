@@ -1,0 +1,1 @@
+app.use("/api/tarefas", routes.tarefa);

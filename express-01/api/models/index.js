@@ -1,6 +1,6 @@
 import "dotenv/config";
 import Sequelize from "sequelize";
-
+import tarefa from "./tarefa";
 import getUserModel from "./user";
 import getMessageModel from "./message";
 
@@ -19,6 +19,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 const models = {
   User: getUserModel(sequelize, Sequelize),
   Message: getMessageModel(sequelize, Sequelize),
+  Tarefa: tarefa(sequelize, Sequelize), // ✅ AQUI
 };
 
 Object.keys(models).forEach((key) => {
@@ -26,7 +27,8 @@ Object.keys(models).forEach((key) => {
     models[key].associate(models);
   }
 });
-console.log(process.env.DATABASE_URL);
-export { sequelize };
 
+console.log(process.env.DATABASE_URL);
+
+export { sequelize };
 export default models;
